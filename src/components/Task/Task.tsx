@@ -5,10 +5,9 @@ type Props = {
 };
 
 const Task: React.FC<Props> = ({ task }) => {
-  console.log(task);
   return (
     <div>
-      <p>Task: {task}</p>
+      <p>Title: {task}</p>
       <button>Edit</button>
       <button>Delete</button>
     </div>

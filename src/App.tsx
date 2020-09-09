@@ -5,8 +5,15 @@ import TaskList from "./containers/TaskList/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState(["hair", "nails", "washing", "cooking"]);
+  const [createTask, setCreateTask] = useState(false);
 
-  const addTask = () => {};
+  const addTaskButton = () => {
+    if (createTask === false) {
+      setCreateTask(true);
+    } else {
+      return setCreateTask(false);
+    }
+  };
 
   const editTask = () => {};
 
@@ -15,7 +22,9 @@ function App() {
   return (
     <div className="App">
       <h1>My Todo-List</h1>
-      <button onClick={addTask}>Add new task</button>
+      <button onClick={addTaskButton}>Add new task</button>
+      {createTask && <input type="text" placeholder="Add new task here..." />}
+
       <TaskList tasks={tasks} />
     </div>
   );
