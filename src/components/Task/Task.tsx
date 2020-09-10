@@ -1,13 +1,14 @@
 import React from "react";
+import { TaskObject } from "../../App";
 
 type Props = {
-  task: string;
+  task: TaskObject;
 };
 
 const Task: React.FC<Props> = ({ task }) => {
   return (
     <div>
-      <p>Title: {task}</p>
+      <p>Title: {task.name}</p>
       <button>Edit</button>
       <button>Delete</button>
     </div>
