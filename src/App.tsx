@@ -4,17 +4,7 @@ import "./App.scss";
 import { TaskContext } from "./context/TaskContext/TaskContext";
 import TaskList from "./containers/TaskList/TaskList";
 
-// interface Props {
-//   onClick: () => void;
-//   createTask: boolean;
-//   value: string;
-//   setValue: Function;
-//   addTaskButton: Function;
-//   submit: Function;
-//   deleteTask: Function;
-// }
-
-const App: React.FC = ({}) => {
+const App: React.FC = () => {
   const { tasks, submit, addTaskButton, createTask, setValue } = useContext(
     TaskContext
   );

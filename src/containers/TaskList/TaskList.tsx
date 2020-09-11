@@ -12,7 +12,7 @@ const TaskList: React.FC<Props> = () => {
   console.log(tasks);
   return (
     <div className="task-list-container">
-      {tasks.map((task) => {
+      {tasks.map((task: TaskObject) => {
         return <Task key={task.id} task={task} />;
       })}
     </div>

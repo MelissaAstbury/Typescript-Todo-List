@@ -13,7 +13,9 @@ interface ContextProps {
   setValue: any;
   addTaskButton: any;
   submit: any;
+  editTask: any;
   deleteTask: any;
+  taskEdited: TaskObject | null;
   //   setValue: (e: React.MouseEvent<HTMLButtonElement>) => string;
   //   addTaskButton: (e: React.MouseEvent<HTMLButtonElement>) => void;
   //   submit: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -32,7 +34,9 @@ export const TaskContext = React.createContext<ContextProps>({
   setValue: null,
   addTaskButton: null,
   submit: null,
+  editTask: null,
   deleteTask: null,
+  taskEdited: null,
 });
 
 const TaskContextProvider: React.FC = (props) => {
@@ -44,6 +48,7 @@ const TaskContextProvider: React.FC = (props) => {
   ]);
   const [createTask, setCreateTask] = useState(false);
   const [value, setValue] = useState("");
+  const [taskEdited, setTaskEdited] = useState<TaskObject | null>(null);
 
   const addTaskButton = () => {
     setCreateTask(!createTask);
@@ -58,6 +63,10 @@ const TaskContextProvider: React.FC = (props) => {
     setCreateTask(false);
   };
 
+  const editTask = (id: string) => {
+    tasks.forEach((task: TaskObject) => task.id === id && setTaskEdited(task));
+  };
+
   const deleteTask = () => {};
 
   return (
@@ -68,8 +77,10 @@ const TaskContextProvider: React.FC = (props) => {
         value,
         addTaskButton,
         submit,
+        editTask,
         deleteTask,
         setValue,
+        taskEdited,
       }}
     >
       {props.children}
