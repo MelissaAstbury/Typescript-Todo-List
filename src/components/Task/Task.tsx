@@ -1,15 +1,19 @@
 import React from "react";
-import { TaskObject } from "../../App";
+import { TaskObject } from "../../context/TaskContext/TaskContext";
 
 type Props = {
   task: TaskObject;
 };
 
 const Task: React.FC<Props> = ({ task }) => {
+  const editTask = () => {
+    console.log(task);
+  };
+
   return (
     <div>
       <p>Title: {task.name}</p>
-      <button>Edit</button>
+      <button onClick={editTask}>Edit</button>
       <button>Delete</button>
     </div>
   );

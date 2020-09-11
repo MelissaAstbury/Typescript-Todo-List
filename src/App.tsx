@@ -1,45 +1,23 @@
-import React, { useState } from "react";
-import { v4 } from "uuid";
+import React, { useContext } from "react";
 import "./App.scss";
 
+import { TaskContext } from "./context/TaskContext/TaskContext";
 import TaskList from "./containers/TaskList/TaskList";
 
-export type TaskObject = {
-  id: string;
-  name: string;
-};
+// interface Props {
+//   onClick: () => void;
+//   createTask: boolean;
+//   value: string;
+//   setValue: Function;
+//   addTaskButton: Function;
+//   submit: Function;
+//   deleteTask: Function;
+// }
 
-function App() {
-  const [tasks, setTasks] = useState<TaskObject[]>([
-    { id: "0", name: "hair" },
-    { id: "1", name: "nails" },
-    { id: "2", name: "washing" },
-    { id: "3", name: "cooking" },
-  ]);
-  const [createTask, setCreateTask] = useState(false);
-  const [value, setValue] = useState("");
-
-  const addTaskButton = () => {
-    setCreateTask(!createTask);
-    // if (createTask === false) {
-    //   setCreateTask(true);
-    // } else {
-    //   return setCreateTask(false);
-    // }
-  };
-
-  const submit = () => {
-    let newObj = {
-      id: v4(),
-      name: value,
-    };
-    setTasks([...tasks, newObj]);
-    setCreateTask(false);
-  };
-
-  const editTask = () => {};
-
-  const deleteTask = () => {};
+const App: React.FC = ({}) => {
+  const { tasks, submit, addTaskButton, createTask, setValue } = useContext(
+    TaskContext
+  );
 
   return (
     <div className="App">
@@ -61,6 +39,6 @@ function App() {
       <TaskList tasks={tasks} />
     </div>
   );
-}
+};
 
 export default App;
